@@ -81,10 +81,18 @@ def depth_first_search(value, tree_root)
     return nil
 end
 
+def dfs_rec(value, node)
+    return nil if node == nil
+    return node if node.value == value
+
+    dfs_rec(value, node.left_child) || dfs_rec(value, node.right_child)
+end
+
 # Returns node
 root = build_tree([1,8,4,18,8,3,-4, 72])
 
 # Gives back node with the search value
-puts depth_first_search(4, root)
-puts breadth_first_search(18, root)
+# puts depth_first_search(4, root)
+# puts breadth_first_search(18, root)
+p dfs_rec(72, root)
 
